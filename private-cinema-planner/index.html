@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Интерактивное сравнение частных микро-кинотеатров для компании из 3–5 человек в Мельбурне и Виктории." />
-  <title>Private Cinema Planner — сравнение кинотеатров</title>
-    <link rel="stylesheet" href="styles-1.css" />
+  <meta name="description" content="Interactive comparison of private micro-cinemas for groups of 3–5 people in Melbourne and Victoria." />
+  <title>Private Cinema Planner — venue comparison</title>
+  <link rel="stylesheet" href="styles-1.css" />
   <link rel="stylesheet" href="styles-2.css" />
   <link rel="stylesheet" href="styles-3.css" />
+  <link rel="stylesheet" href="i18n.css" />
 </head>
 <body>
-<div class="noise"></div>
+  <div class="noise"></div>
   <header>
     <div class="container nav">
       <div class="brand">
@@ -19,68 +20,74 @@
         </div>
         <span>Private Cinema Planner</span>
       </div>
-      <nav class="nav-links" aria-label="Основная навигация">
-        <a href="#planner">Калькулятор</a>
-        <a href="#comparison">Сравнение</a>
-        <a href="#sources">Источники</a>
-      </nav>
+      <div class="nav-actions">
+        <nav class="nav-links" aria-label="Primary navigation" data-i18n-aria-label="navAria">
+          <a href="#planner" data-i18n="navPlanner">Planner</a>
+          <a href="#comparison" data-i18n="navComparison">Comparison</a>
+          <a href="#sources" data-i18n="navSources">Sources</a>
+        </nav>
+        <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="languageAria">
+          <button class="lang-button active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-button" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <div class="hero">
       <div>
-        <h1>Ваш кинотеатр. Только ваша компания.</h1>
-        <p>Сравните частные экраны для 3–5 человек, настройте бюджет на еду и сразу увидите полный чек и стоимость на гостя.</p>
+        <h1 data-i18n="heroTitle">Your cinema. Your group only.</h1>
+        <p data-i18n="heroText">Compare private screens for 3–5 people, adjust the food budget, and instantly see the full bill and cost per guest.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#planner">Рассчитать стоимость</a>
-          <button class="btn btn-secondary" id="copyButton" type="button">Скопировать результат</button>
+          <a class="btn btn-primary" href="#planner" data-i18n="calculateButton">Calculate cost</a>
+          <button class="btn btn-secondary" id="copyButton" type="button" data-i18n="copyButton">Copy result</button>
         </div>
       </div>
-      <div class="projector" role="img" aria-label="Стилизованный частный кинозал с пятью креслами">
+      <div class="projector" role="img" aria-label="Stylised private cinema with five seats" data-i18n-aria-label="projectorAria">
         <div class="screen"></div>
         <div class="seats" aria-hidden="true">
           <div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div>
         </div>
-        <div class="projector-note">Расчёты в AUD</div>
+        <div class="projector-note" data-i18n="audNote">Prices in AUD</div>
       </div>
     </div>
 
     <section id="planner" class="planner" aria-labelledby="planner-title">
       <div class="planner-head">
         <div>
-          <h2 id="planner-title">Настройте просмотр</h2>
-          <p>Базовые тарифы рассчитаны на 2 часа. Еда — оценка на человека из предоставленной таблицы.</p>
+          <h2 id="planner-title" data-i18n="plannerTitle">Plan your screening</h2>
+          <p data-i18n="plannerText">Base hire rates cover 2 hours. Food is estimated per person from the supplied pricing table.</p>
         </div>
       </div>
 
       <div class="controls">
         <div class="control">
-          <label for="guestCount">Количество гостей</label>
+          <label for="guestCount" data-i18n="guestLabel">Number of guests</label>
           <div class="stepper">
-            <button id="minusGuest" type="button" aria-label="Уменьшить количество гостей">−</button>
+            <button id="minusGuest" type="button" aria-label="Decrease number of guests" data-i18n-aria-label="minusGuestAria">−</button>
             <output id="guestCount" aria-live="polite">5</output>
-            <button id="plusGuest" type="button" aria-label="Увеличить количество гостей">+</button>
+            <button id="plusGuest" type="button" aria-label="Increase number of guests" data-i18n-aria-label="plusGuestAria">+</button>
           </div>
         </div>
 
         <div class="control">
-          <label for="foodMode">Еда и напитки</label>
+          <label for="foodMode" data-i18n="foodLabel">Food and drinks</label>
           <select id="foodMode">
-            <option value="recommended">Рекомендуемый пакет</option>
-            <option value="none">Без еды</option>
-            <option value="custom">Свой бюджет</option>
+            <option value="recommended" data-i18n="foodRecommended">Recommended package</option>
+            <option value="none" data-i18n="foodNone">No food</option>
+            <option value="custom" data-i18n="foodCustom">Custom budget</option>
           </select>
           <div id="customFood" class="custom-food">
             <div class="range-wrap">
-              <input id="foodBudget" type="range" min="0" max="80" value="30" step="5" aria-label="Бюджет на еду на одного гостя" />
-              <span class="range-value" id="foodBudgetValue">$30/чел.</span>
+              <input id="foodBudget" type="range" min="0" max="80" value="30" step="5" aria-label="Food budget per guest" data-i18n-aria-label="foodBudgetAria" />
+              <span class="range-value" id="foodBudgetValue">$30/person</span>
             </div>
           </div>
         </div>
 
         <div class="control">
-          <label for="totalBudget">Максимальный бюджет</label>
+          <label for="totalBudget" data-i18n="totalBudgetLabel">Maximum budget</label>
           <div class="range-wrap">
             <input id="totalBudget" type="range" min="150" max="1000" value="850" step="25" />
             <span class="range-value" id="totalBudgetValue">$850</span>
@@ -88,44 +95,44 @@
         </div>
 
         <div class="control">
-          <label for="sortBy">Сортировать</label>
+          <label for="sortBy" data-i18n="sortLabel">Sort by</label>
           <select id="sortBy">
-            <option value="total">По общему итогу</option>
-            <option value="person">По цене на человека</option>
-            <option value="premium">Сначала премиум</option>
+            <option value="total" data-i18n="sortTotal">Total cost</option>
+            <option value="person" data-i18n="sortPerson">Cost per person</option>
+            <option value="premium" data-i18n="sortPremium">Premium first</option>
           </select>
         </div>
       </div>
 
       <div class="metrics" aria-live="polite">
-        <div class="metric"><span>Самый доступный вариант</span><strong id="cheapestMetric">—</strong></div>
-        <div class="metric"><span>Помещаются в бюджет</span><strong id="budgetMetric">—</strong></div>
-        <div class="metric"><span>Экономия против премиум-варианта</span><strong id="savingMetric">—</strong></div>
+        <div class="metric"><span data-i18n="cheapestLabel">Most affordable option</span><strong id="cheapestMetric">—</strong></div>
+        <div class="metric"><span data-i18n="budgetFitLabel">Within budget</span><strong id="budgetMetric">—</strong></div>
+        <div class="metric"><span data-i18n="savingLabel">Saving versus premium option</span><strong id="savingMetric">—</strong></div>
       </div>
     </section>
 
     <section id="comparison" aria-labelledby="comparison-title">
       <div class="section-head">
         <div>
-          <h2 id="comparison-title">Сравнение площадок</h2>
-          <p>Стоимость обновляется автоматически при изменении числа гостей и настроек еды.</p>
+          <h2 id="comparison-title" data-i18n="comparisonTitle">Venue comparison</h2>
+          <p data-i18n="comparisonText">Pricing updates automatically when you change the number of guests or food settings.</p>
         </div>
-        <div class="legend" aria-label="Легенда достоверности цен">
-          <span class="dot confirmed"></span> предоставленная фиксированная цена
-          <span class="dot estimated"></span> оценка или диапазон
+        <div class="legend" aria-label="Price confidence legend" data-i18n-aria-label="legendAria">
+          <span class="dot confirmed"></span> <span data-i18n="legendFixed">supplied fixed price</span>
+          <span class="dot estimated"></span> <span data-i18n="legendEstimated">estimate or range</span>
         </div>
       </div>
 
       <div id="venueList" class="venues"></div>
-      <div id="emptyState" class="empty">Ни одна площадка не укладывается в выбранный бюджет. Увеличьте лимит или отключите пакет еды.</div>
+      <div id="emptyState" class="empty" data-i18n="emptyState">No venue fits the selected budget. Increase the limit or remove the food package.</div>
 
       <div class="chart-wrap">
-        <h3 class="chart-title">Визуальное сравнение полного чека</h3>
+        <h3 class="chart-title" data-i18n="chartTitle">Visual comparison of the full bill</h3>
         <div id="chart"></div>
       </div>
 
       <div class="recommendation" aria-live="polite">
-        <div class="rec-visual"></div>
+        <div class="rec-visual" data-label="BEST MATCH"></div>
         <div class="rec-content">
           <h3 id="recommendationTitle">—</h3>
           <p id="recommendationText">—</p>
@@ -136,31 +143,31 @@
 
     <section id="sources" class="notes" aria-labelledby="sources-title">
       <details>
-        <summary id="sources-title">Методика расчёта, ограничения и источники</summary>
+        <summary id="sources-title" data-i18n="sourcesTitle">Calculation method, limitations and sources</summary>
         <div class="details-content">
-          <p>Страница использует данные из исходной таблицы пользователя. Для группы меньше пяти человек рекомендованный бюджет на еду пересчитывается пропорционально на каждого гостя:</p>
+          <p data-i18n="methodIntro">This page uses the figures from the user's original table. For groups smaller than five, the recommended food budget is recalculated proportionally per guest:</p>
           <ul>
-            <li>Henkel Street Cinema: $129 аренда + примерно $23 еды на гостя.</li>
-            <li>Village Cinemas Vsuite: $350 аренда + примерно $30 еды на гостя.</li>
-            <li>FOMO Cinemas: $500–$650 аренда + примерно $35 еды на гостя.</li>
+            <li data-i18n="methodHenkel">Henkel Street Cinema: $129 hire + approximately $23 of food per guest.</li>
+            <li data-i18n="methodVillage">Village Cinemas Vsuite: $350 hire + approximately $30 of food per guest.</li>
+            <li data-i18n="methodFomo">FOMO Cinemas: $500–$650 hire + approximately $35 of food per guest.</li>
           </ul>
-          <p>Диапазон FOMO отображается как минимальный и максимальный итог. Все суммы — австралийские доллары.</p>
+          <p data-i18n="methodRange">The FOMO range is shown as a minimum and maximum total. All amounts are in Australian dollars.</p>
           <div class="source-list">
-            <a href="https://www.henkelstreetcinema.com.au/faq" target="_blank" rel="noreferrer">Henkel Street Cinema — FAQ</a>
-            <a href="https://henkelstreetcinema.as.me/schedule/2640914a/category/Private%20Cinema%20Hire" target="_blank" rel="noreferrer">Henkel Street Cinema — форма бронирования</a>
-            <a href="https://villagecinemas.com.au/experiences/vsuite" target="_blank" rel="noreferrer">Village Cinemas — Vsuite</a>
-            <a href="https://www.fomocinemas.com.au/" target="_blank" rel="noreferrer">FOMO Cinemas — официальный сайт</a>
+            <a href="https://www.henkelstreetcinema.com.au/faq" target="_blank" rel="noreferrer" data-i18n="sourceHenkelFaq">Henkel Street Cinema — FAQ</a>
+            <a href="https://henkelstreetcinema.as.me/schedule/2640914a/category/Private%20Cinema%20Hire" target="_blank" rel="noreferrer" data-i18n="sourceHenkelBooking">Henkel Street Cinema — booking form</a>
+            <a href="https://villagecinemas.com.au/experiences/vsuite" target="_blank" rel="noreferrer" data-i18n="sourceVillage">Village Cinemas — Vsuite</a>
+            <a href="https://www.fomocinemas.com.au/" target="_blank" rel="noreferrer" data-i18n="sourceFomo">FOMO Cinemas — official website</a>
           </div>
-          <div class="disclaimer">Цены, доступность, минимальный заказ, правила внешней еды и продолжительность сеанса могут измениться. Перед оплатой проверьте итоговую сумму в форме бронирования или у площадки. В момент сборки страницы автоматическая онлайн-проверка официальных сайтов была недоступна, поэтому данные не заявлены как подтверждённые на август 2026 года.</div>
+          <div class="disclaimer" data-i18n="disclaimer">Prices, availability, minimum orders, outside-food rules and screening duration may change. Before paying, verify the final amount in the booking form or directly with the venue. Automated verification of the official websites was unavailable when this page was built, so these figures are not presented as confirmed for August 2026.</div>
         </div>
       </details>
     </section>
   </main>
 
   <footer>
-    <div class="container">Private Cinema Planner · Локальная интерактивная страница без внешних библиотек и трекеров.</div>
+    <div class="container" data-i18n="footer">Private Cinema Planner · A local interactive page with no external libraries or trackers.</div>
   </footer>
-  <div class="toast" id="toast" role="status" aria-live="polite">Результат скопирован</div>
+  <div class="toast" id="toast" role="status" aria-live="polite" data-i18n="toastCopied">Result copied</div>
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
