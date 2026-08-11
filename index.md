@@ -32,10 +32,17 @@ Installing, configuring and troubleshooting Windows/Linux/macOS systems and netw
 
 ## Projects
 
+### Main Project
+
+- **[Marrahub](https://marrahub.com.au)** — Community hub platform for Marra Community Hub Incorporated, supported through my IT Infrastructure Volunteer role.
+
+### Other Projects
+
 - **[Arch_game](https://github.com/radik097/Arch_game)** — Interactive browser sandbox for learning Arch Linux installation. *React, Vite, TypeScript, v86, xterm, SQLite*
 - **[MCZPlauncherv2](https://github.com/radik097/MCZPlauncherv2)** — Portable Windows-style launcher for Minecraft NeoForge modpacks. *Rust, Iced, Tokio*
 - **[GitInstructionSite](https://github.com/radik097/GitInstructionSite)** — Multilingual interactive learning site for Git/GitHub fundamentals. *JavaScript*
 - **[NektoMe-LIB](https://github.com/radik097/NektoMe-LIB)** — JavaScript library for the Nekto.me site.
+- **[Private Cinema Planner](private-cinema-planner/)** — Bilingual (EN/RU) venue planning tool for private cinema bookings. *HTML/CSS/JS*
 
 See all repositories on [GitHub](https://github.com/radik097).
 
